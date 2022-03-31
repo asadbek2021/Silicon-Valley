@@ -1,0 +1,55 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jasmine": true,
+        "jest": true,
+        "node": true,
+        "es6":true
+    },
+    "ignorePatterns": ["dist", "docs", "node_modules", "coverage"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:node/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb-base",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "settings": {
+        "noInlineConfig": true,
+        "import/resolver":{
+          "node":{
+            "extensions":[".js",".jsx",".ts",".tsx"]
+          }
+        },
+        "node": {
+            "tryExtensions": [".js", ".json", ".node",".ts",".cjs"]
+        }
+    },
+    "rules": {
+        "no-console": "error",
+        "semi":"warn",
+        "no-unused-vars": "error",
+        "no-var": "error",
+        "import/extensions": "off",
+        "linebreak-style": "off",
+        "no-underscore-dangle": "off",
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-var-requires":0,
+        "@typescript-eslint/no-explicit-any": 1,
+        "node/no-unsupported-features/es-syntax": "off",
+        "node/no-missing-require": ["error", {
+            "resolvePaths": ["/node_modules"],
+            "tryExtensions": [".js", ".json", ".node",".ts",".cjs"]
+          }]
+    },
+    "eslin.autoFixOnSave": true
+}

@@ -1,11 +1,9 @@
-import fp from 'fastify-plugin';
-import { FastifyInstance } from 'fastify';
+import { Router } from 'express';
 import { login, register } from './auth.service';
 
+const router = Router();
 
-async function authRouter(fastify:FastifyInstance) {
-    fastify.post('/auth/login', login)
-    fastify.post('/auth/register', register)
-}
+    router.post('/auth/login', login)
+    router.post('/auth/register', register)
 
-export default fp(authRouter)
+export default router;

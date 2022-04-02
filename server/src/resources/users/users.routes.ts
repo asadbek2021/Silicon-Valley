@@ -1,14 +1,12 @@
-import fp from 'fastify-plugin';
-import { FastifyInstance } from 'fastify';
-import auth  from '../../middlewares/passport';
+import { Router } from 'express';
 import { getAllUsers } from './users.service';
 
 
-const options ={
-    beforeHandler: auth
-}
-async function userRouter(fastify:FastifyInstance, ) {
-    fastify.get('/users',options, getAllUsers)
-}
+const router = Router();
 
-export default fp(userRouter)
+router.get('/', getAllUsers)
+router.get('/', getAllUsers)
+router.get('/', getAllUsers)
+router.get('/', getAllUsers)
+
+export default router;

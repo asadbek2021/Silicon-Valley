@@ -1,9 +1,8 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import { Request, Response, NextFunction } from "express";
 import User from "./users.model";
 
 
-export async function getAllUsers(req:FastifyRequest, res:FastifyReply) {
-    const { email, password } = req.body;
-    const user = await User.find({ email });
-    
+export async function getAllUsers(req:Request, res:Response) {
+    const users = await User.find({});
+    res.send(users);
 }

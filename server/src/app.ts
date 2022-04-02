@@ -1,26 +1,14 @@
-import Fastify from 'fastify';
-import fastifyCors from 'fastify-cors';
-import passport from 'fastify-passport';
-import { Strategy, ExtractJwt } from 'passport-jwt';
+import express from 'express';
 import dbConnect from './loader/db';
 import authRoutes from './resources/auth/auth.routes';
-import config from './config/config';
-import {jwtCallback} from './resources/auth/auth.repository';
+import blogRoutes from './resources/blogs/blogs.routes';
+import userRoutes from './resources/users/users.routes';
 
 dbConnect()
-const fastify = Fastify({
-    logger: true
-})
+const app = express();
 
-const opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config.JWT_SECRET,
-  };
+app.use(authRoutes);
+app.use(blogRoutes);
+app.use(userRoutes);
 
-fastify.register(fastifyCors)
-fastify.register(passport.initialize())
-passport.use(new Strategy(opts,jwtCallback))
-
-fastify.register(authRoutes);
-
-export default fastify;
+export default app;
